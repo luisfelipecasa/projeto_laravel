@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -66,9 +67,10 @@ Route::prefix('/restaurantes')->group(function () {
     Route::put('/editar', [RestaurantesController::class,'editar'])->name('restaurantes.editarSalvar');
 });
 
-// Route::get('/autenticar', [AutenticaController::class, 'index'])->name('autentica');
-// Route::post('/autenticar/gravar', [AutenticaController::class, 'gravar'])->name('autentica.gravar');
-// Route::get('/autenticar/login', [AutenticaController::class, 'login'])->name('autentica.login');
-// Route::post('/autenticar/login', [AutenticaController::class, 'login']);
-
 Route::resource('produtos', ProdutosController::class);
+
+Route::prefix('/carrinho')->group(function () {
+    Route::get('/', [CarrinhoController::class,'index'])->name('carrinho');
+    Route::get('/adicionar/{produto}', [CarrinhoController::class,'adicionar'])->name('carrinho.adicionar');
+    Route::get('/remover/{produto}', [CarrinhoController::class,'remover'])->name('carrinho.remover');
+});
