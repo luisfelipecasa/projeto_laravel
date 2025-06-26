@@ -16,6 +16,15 @@
                             @foreach ($carrinho as $id => $item)
                                 <div
                                     class="w-full sm:w-64 bg-white dark:bg-gray-700 rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow duration-300">
+                                    @if ($item['image'])
+                                        <img style="max-width: 200px;" src="{{ asset('storage/' . $item['image']) }}" alt="Imagem de {{ $item['nome'] }}"
+                                            class="w-full h-48 object-cover">
+                                    @else
+                                        <div
+                                            class="w-full h-48 flex items-center justify-center bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-300">
+                                            Sem imagem
+                                        </div>
+                                    @endif
                                     <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
                                         {{ $item['nome'] }}
                                     </h3>

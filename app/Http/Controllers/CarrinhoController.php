@@ -20,7 +20,7 @@ class CarrinhoController extends Controller
     }
 
     public function remover(Produto $produto)
-    {
+        {
 
         $carrinho = session()->get('carrinho', []);
 
