@@ -33,6 +33,7 @@
 
                                 <div class="p-4 text-gray-900 dark:text-gray-100">
                                     <h3 class="text-lg font-semibold mb-2">{{ $produto->nome }}</h3>
+                                    <p class="text-sm mb-1">{{ $produto->categoria->nome}}</p>
                                     <p class="text-sm mb-1">R$ {{ number_format($produto->preco, 2, ',', '.') }}</p>
                                     <p class="text-sm mb-3">{{ $produto->descricao }}</p>
 

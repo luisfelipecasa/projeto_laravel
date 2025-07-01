@@ -23,5 +23,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             NotaSeeder::class,
         ]);
+
+        $this->call([
+            CategoriasSeeder::class,
+        ]);
     }
 }

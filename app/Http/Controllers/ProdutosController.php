@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
@@ -12,8 +13,7 @@ class ProdutosController extends Controller
      */
     public function index()
     {
-        $produtos = Produto::all();
-
+        $produtos = Produto::with('categoria')->get();
         return view("produtos.index", [
             'produtos' => $produtos,
         ]);
@@ -24,7 +24,8 @@ class ProdutosController extends Controller
      */
     public function create()
     {
-        return view('produtos.create');
+        $categorias = Categoria::all();
+        return view('produtos.create', ['categorias' => $categorias]);
     }
 
     /**
@@ -34,6 +35,7 @@ class ProdutosController extends Controller
     {
         $dados = $request->validate([
             'nome' => 'required|string',
+            'categorias_id' => 'required|exists:categorias,id',
             'preco' => 'required|numeric',
             'descricao' => 'required|string',
             'imagem' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
