@@ -23,6 +23,18 @@
                     <x-nav-link :href="route('carrinho')" :active="request()->routeIs('carrinho.index')">
                         Meu carrinho
                     </x-nav-link>
+
+                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
+                        Blog
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('posts.create')" :active="request()->routeIs('posts.create')">
+                        Post - Adicionar
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index')">
+                        Categorias
+                    </x-nav-link>
                 </div>
             </div>
 

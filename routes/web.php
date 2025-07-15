@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\CarrinhoController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -74,3 +77,9 @@ Route::prefix('/carrinho')->group(function () {
     Route::get('/adicionar/{produto}', [CarrinhoController::class,'adicionar'])->name('carrinho.adicionar');
     Route::get('/remover/{produto}', [CarrinhoController::class,'remover'])->name('carrinho.remover');
 });
+
+//blog
+
+Route::resource('posts', PostsController::class);
+Route::resource('categories', CategoriesController::class);
+Route::resource('comments', CommentsController::class);
